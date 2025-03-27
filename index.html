@@ -22,9 +22,16 @@
     <h2>Summary</h2>
     <p>Our project is to build a shared address space multiprocessor cache simulator, and to implement and measure the performances of different snooping-based cache-coherence protocols.</p>
     
+    <h2>Webpage</h2>
+    <p>https://mshort2.github.io/15418project/</p>
+
     <h2>Background</h2>
     <p>We covered snooping-based cache coherence protocols in class, including MSI, MESI, MOESI, and MESIF.</p>
     
+    <img src="msi.png" alt="MSI Protocol" style="width: 50%;">
+    <img src="mesi.png" alt="MESI Protocol" style="width: 50%;">
+    <img src="Coherence State Properties.png" alt="Cache State Properties" style="width: 50%;">
+
     <h2>Project Plan</h2>
     <p>We plan to test using a write cache in addition to these protocols, where multiple writes to the same block are cached and coalesced into a single write transaction instead of being sent separately. This will be implemented on top of an existing protocol.</p>
     
@@ -33,18 +40,38 @@
     <p>We also need to establish a communication system between “processors” and ensure proper message transmission. Additionally, designing tests and performance metrics for our simulator is essential. We plan to use Professor Railing’s Computer Architecture Design Simulator for Students (CADSS) framework.</p>
     
     <h2>Resources</h2>
-    <p>We are using the <a href="https://dl.acm.org/doi/fullHtml/10.1145/3605507.3610626">CADSS framework</a> for the cache simulator and testing, as suggested by Professor Mowry. We are also referring to research papers for adding write caches to snooping protocols. We are still deciding on trace generation software for memory traces.</p>
+    <p>We are using the <a href="https://dl.acm.org/doi/fullHtml/10.1145/3605507.3610626">CADSS framework</a> created by Professor Railing for the cache simulator and testing, as suggested by Professor Mowry. We are also referring to research papers like <a href= "https://dl.acm.org/doi/pdf/10.1145/225830.223998">this one by Fredrik Dahlgren</a> for adding write caches to snooping protocols. We are still deciding on trace generation software for memory traces.</p>
     
     <h2>Goals</h2>
     <ul>
-        <li><strong>Plan to achieve:</strong> [Details to be added]</li>
-        <li><strong>Hope to achieve:</strong> [Details to be added]</li>
+        <li><strong>Plan to achieve:</strong>
+            <ul>
+                <li>Implement basic cache coherence protocols (MSI, MESI, MESIF, MOESI, etc.)</li>
+                <li>Develop write caching mechanism</li>
+                <li>Integrate with CADSS framework</li>
+                <li>Generate exhasutive traces for performance benchmarking</li>
+            </ul>
+        </li>
+        <li><strong>Hope to achieve:</strong>
+            <ul>
+                <li>Optimize write caching for efficiency</li>
+                <li>Compare multiple coherence protocols under different workloads</li>
+                <li>Generate detailed performance reports</li>
+            </ul>
+        </li>
     </ul>
     
     <h2>Platform Choice</h2>
     <p>We will use the Gates machines. Since our project is a simulator, it does not require complex hardware, but we need a multiprocessor machine to simulate a multiprocessor cache.</p>
     
     <h2>Schedule</h2>
-    <p>[Details to be filled in]</p>
+    <p><strong>April 7th: </strong>Implement MSI</p>
+    <p><strong>April 10th: </strong>Implement MESI and MESIF</p>
+    <p><strong>April 14th: </strong>Implement MOESI and collect initial data</p>
+    <p><strong>April 15th: </strong>Compile our Milestone report</p>
+    <p><strong>April 20th: </strong>Implement write caching mechanism</p>
+    <p><strong>April 23rd: </strong>Generate exhaustive traces</p>
+    <p><strong>April 26th: </strong>Create reports for performance benchmarks</p>
+    <p><strong>April 28th: </strong>Submit final report and finalize poster</p>
 </body>
 </html>
