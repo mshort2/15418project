@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiprocessor Cache Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1, h2 {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiprocessor Cache Simulator Project</h1>
+    
+    <h2>Summary</h2>
+    <p>Our project is to build a shared address space multiprocessor cache simulator, and to implement and measure the performances of different snooping-based cache-coherence protocols.</p>
+    
+    <h2>Background</h2>
+    <p>We covered snooping-based cache coherence protocols in class, including MSI, MESI, MOESI, and MESIF.</p>
+    
+    <h2>Project Plan</h2>
+    <p>We plan to test using a write cache in addition to these protocols, where multiple writes to the same block are cached and coalesced into a single write transaction instead of being sent separately. This will be implemented on top of an existing protocol.</p>
+    
+    <h2>Challenges</h2>
+    <p>Maintaining cache coherence across transactions is a primary challenge. Write caching introduces an added complexity, requiring adherence to release consistency. Implementing the coherence protocols correctly in our simulator is nontrivial due to the complexity of message passing and state transitions.</p>
+    <p>We also need to establish a communication system between “processors” and ensure proper message transmission. Additionally, designing tests and performance metrics for our simulator is essential. We plan to use Professor Railing’s Computer Architecture Design Simulator for Students (CADSS) framework.</p>
+    
+    <h2>Resources</h2>
+    <p>We are using the <a href="https://dl.acm.org/doi/fullHtml/10.1145/3605507.3610626">CADSS framework</a> for the cache simulator and testing, as suggested by Professor Mowry. We are also referring to research papers for adding write caches to snooping protocols. We are still deciding on trace generation software for memory traces.</p>
+    
+    <h2>Goals</h2>
+    <ul>
+        <li><strong>Plan to achieve:</strong> [Details to be added]</li>
+        <li><strong>Hope to achieve:</strong> [Details to be added]</li>
+    </ul>
+    
+    <h2>Platform Choice</h2>
+    <p>We will use the Gates machines. Since our project is a simulator, it does not require complex hardware, but we need a multiprocessor machine to simulate a multiprocessor cache.</p>
+    
+    <h2>Schedule</h2>
+    <p>[Details to be filled in]</p>
+</body>
+</html>
