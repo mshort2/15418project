@@ -1,79 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Multiprocessor Cache Simulator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            padding: 20px;
-            line-height: 1.6;
-        }
-        h1, h2 {
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Adaptive Seuqential Prefetching & Cache Simulator Project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2em;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    section {
+      margin-bottom: 1.5em;
+    }
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h1>Multiprocessor Cache Simulator Project</h1>
-    <h3>Team Members: Matthew Short and Saaketh Nandakumar</h3>
-    
+  <h1>Adaptive Seuqential Prefetching & Cache Simulator Project</h1>
+
+  <section id="summary">
     <h2>Summary</h2>
-    <p>Our project is to build a shared address space multiprocessor cache simulator, and to implement and measure the performances of different snooping-based cache-coherence protocols.</p>
-    
-    <h2>Webpage</h2>
-    <p>https://mshort2.github.io/15418project/</p>
+    <p>Our project is to build a shared address space multiprocessor cache simulator using the MESI and MOESI protocols, and then compare the performance of adding on a cache coherency extension known as adaptive sequential prefetching to see how performance is affected.</p>
+  </section>
 
+  <section id="background">
     <h2>Background</h2>
-    <p>We covered snooping-based cache coherence protocols in class, including MSI, MESI, MOESI, and MESIF.</p>
-    
-    
-    <img src="MSI.png" alt="MSI Protocol" style="width: 50%;">
-    <img src="MESI.png" alt="MESI Protocol" style="width: 50%;">
-    <img src="Coherence State Properties.png" alt="Cache State Properties" style="width: 50%;">
+    <p>We covered snooping based cache coherence protocols in class like MSI, MESI, MOESI, and MESIF.</p>
+    <img src="MSI.png" alt="MSI" width=400>
+    <img src="MESI.png" alt="MESI" width = 400>
+    <img src="Coherence State Properties.png" alt="Coherence State" width=400>
+    <p>
+      We read up about adaptive sequential prefetching, which is an extension that can be added onto a cache coherency protocol intended to decrease the cache miss rate. From the paper <a href=https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=729785 target="_blank">“Performance Evaluation and Cost Analysis of Cache Protocol Extensions for Shared-Memory Multiprocessors”</a> by Fredrik Dahlgren and Michael Dubois, “Adaptive sequential prefetching cuts the number of read misses by fetching a number of consecutive blocks into the cache in anticipation of future misses. The number of prefetched blocks is adapted according to a dynamic measure of prefetching effectiveness which reflects the amount of spatial locality at different times … Moreover, as opposed to simply adopting a larger block size, it does not affect the false sharing miss rate.”
+    </p>
+  </section>
 
-    <h2>Project Plan</h2>
-    <p>We plan to test using a write cache in addition to these protocols, where multiple writes to the same block are cached and coalesced into a single write transaction instead of being sent separately. This will be implemented on top of an existing protocol.</p>
-    
-    <h2>Challenges</h2>
-    <p>Maintaining cache coherence across transactions is a primary challenge. Write caching introduces an added complexity, requiring adherence to release consistency. Implementing the coherence protocols correctly in our simulator is nontrivial due to the complexity of message passing and state transitions.</p>
-    <p>We also need to establish a communication system between “processors” and ensure proper message transmission. Additionally, designing tests and performance metrics for our simulator is essential. We plan to use Professor Railing’s Computer Architecture Design Simulator for Students (CADSS) framework.</p>
-    
+  <section id="challenge">
+    <h2>Challenge</h2>
+    <p>
+      The challenge of making a parallel cache is making sure that we maintain cache coherence across transactions. Implementing the coherence protocols will be quite nontrivial since there is a good amount of complexity for the systems in terms of messages being sent and state movements, so we need to ensure that the protocols are done correctly in our simulator. We will need to come up with a communication system between “processors” and make sure they send the correct messages to each other.
+    </p>
+    <p>
+      Additionally, we need to figure out how to add on adaptive sequential prefetching to the plain MESI and MOESI while still ensuring their correctness. Implementing adaptive sequential prefetching includes adding extra bits for each cache line and additional counters for each cache.
+    </p>
+    <p>
+      We also need to come up with a way to test out our simulator and metrics by which we measure performance. Our plan is to use the framework from Professor Railing's Computer Architecture Design Simulator for Students. We will need to be able to implement the protocols in accordance with this framework, which will require learning about the simulator framework and how to use it. We also need to come up with programs to test out our cache simulators on, and we plan to find traces of example memory accesses similar to what we did in 15213’s Cache Lab. We should also pick programs that can show when adaptive sequential prefetching is most useful and least useful so that we can best analyze the performance.
+    </p>
+  </section>
+
+  <section id="resources">
     <h2>Resources</h2>
-    <p>We are using the <a href="https://dl.acm.org/doi/fullHtml/10.1145/3605507.3610626">CADSS framework</a> created by Professor Railing for the cache simulator and testing, as suggested by Professor Mowry. We are also referring to research papers like <a href= "https://dl.acm.org/doi/pdf/10.1145/225830.223998">this one by Fredrik Dahlgren</a> for adding write caches to snooping protocols. We are still deciding on trace generation software for memory traces.</p>
-    
+    <p>
+      We are using the <a href="https://dl.acm.org/doi/fullHtml/10.1145/3605507.3610626" target="_blank">CADSS</a> for the cache simulator and testing as suggested by Professor Mowry. We are referring to the Dahlgren and Dubois paper mentioned above (<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=729785" target="_blank">link</a>) for adding adaptive sequential prefetching. We have not decided on what we will use for traces, but we are thinking about potentially using a trace generation software to come up with potential memory traces.
+    </p>
+  </section>
+
+  <section id="goals">
     <h2>Goals</h2>
+    <p><strong>PLAN TO ACHIEVE:</strong></p>
     <ul>
-        <li><strong>Plan to achieve:</strong>
-            <ul>
-                <li>Implement basic cache coherence protocols (MSI, MESI, MESIF, MOESI, etc.)</li>
-                <li>Develop write caching mechanism</li>
-                <li>Integrate with CADSS framework</li>
-                <li>Generate exhasutive traces for performance benchmarking</li>
-            </ul>
-        </li>
-        <li><strong>Hope to achieve:</strong>
-            <ul>
-                <li>Optimize write caching for efficiency</li>
-                <li>Compare multiple coherence protocols under different workloads</li>
-                <li>Generate detailed performance reports</li>
-            </ul>
-        </li>
+      <li>Design and implement a multiprocessor cache simulator that supports both MESI and MOESI protocols.</li>
+      <li>Develop a robust communication system for processor transactions to ensure proper cache coherence.</li>
+      <li>Integrate adaptive sequential prefetching by adding necessary extra bits and counters, while preserving protocol correctness.</li>
+      <li>Validate the simulator using a well-defined set of memory traces and testing programs based on the CADSS framework.</li>
     </ul>
-    
+    <p><strong>HOPE TO ACHIEVE:</strong></p>
+    <ul>
+      <li>Achieve improved simulation accuracy and performance benchmarking through the use of adaptive sequential prefetching.</li>
+      <li>Demonstrate scenarios where adaptive prefetching significantly improves cache performance and where its benefits are limited.</li>
+    </ul>
+  </section>
+
+  <section id="platform">
     <h2>Platform Choice</h2>
-    <p>We will use the Gates machines. Since our project is a simulator, it does not require complex hardware, but we need a multiprocessor machine to simulate a multiprocessor cache.</p>
-    
+    <p>
+      We will use the Gates machines. Our system does not require very complicated hardware since it is just a simulator of a cache, but we will require a multiprocessor machine like the ones in Gates since we need to simulate a multiprocessor cache.
+    </p>
+  </section>
+
+  <section id="schedule">
     <h2>Schedule</h2>
-    <p><strong>April 7th: </strong>Implement MSI</p>
-    <p><strong>April 10th: </strong>Implement MESI and MESIF</p>
-    <p><strong>April 14th: </strong>Implement MOESI and collect initial data</p>
-    <p><strong>April 15th: </strong>Compile our Milestone report</p>
-    <p><strong>April 20th: </strong>Implement write caching mechanism</p>
-    <p><strong>April 23rd: </strong>Generate exhaustive traces</p>
-    <p><strong>April 26th: </strong>Create reports for performance benchmarks</p>
-    <p><strong>April 28th: </strong>Submit final report and finalize poster</p>
+    <ul>
+        <li>April 12: Get basic cache coherence protocols working</li>
+        <li>April 15: Develop traces to validate our current coherence setup</li>
+        <li>April 20: Implement adaptive sequential prefetching</li>
+        <li>April 24: Generate exhaustive benchmarking data for ASP</li>
+        <li>April 26: Create final report + poster and draw conclusions about when ASP is effective</li>
+      </ul>
+  </section>
 </body>
 </html>
